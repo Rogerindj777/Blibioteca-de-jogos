@@ -52,6 +52,7 @@ Esse usuario valoriza:
 - Botao para iniciar jogo.
 - Funcionamento offline para biblioteca local.
 - Busca online opcional de metadados quando houver internet.
+- Detalhes enriquecidos do jogo, incluindo genero, sinopse, desenvolvedora, publicadora, ano de lancamento e imagens.
 
 ### Fora do MVP
 
@@ -131,10 +132,46 @@ Ao selecionar um jogo, o usuario deve ver uma tela ou painel de detalhes com:
 
 - Nome do jogo.
 - Capa/banner.
+- Genero ou generos do jogo.
+- Sinopse curta.
+- Desenvolvedora e publicadora, quando encontradas.
+- Ano ou data de lancamento, quando encontrada.
+- Plataforma/origem local detectada.
 - Caminho do executavel.
 - Origem detectada.
 - Botao principal para jogar.
 - Acoes para editar, favoritar, ocultar ou remover da biblioteca.
+
+### Metadados e Sinopse Online
+
+Quando houver internet, o app deve tentar enriquecer os jogos cadastrados com informacoes publicas encontradas online. Esse processo deve ser opcional, discreto e nunca impedir o uso da biblioteca local.
+
+Os metadados desejados sao:
+
+- Nome oficial do jogo.
+- Capa principal.
+- Banner ou imagem de fundo.
+- Genero ou generos.
+- Sinopse curta.
+- Desenvolvedora.
+- Publicadora.
+- Ano ou data de lancamento.
+- Serie/franquia, quando aplicavel.
+- Links de referencia, se forem uteis para auditoria interna do cadastro.
+
+A busca de metadados deve respeitar algumas regras de produto:
+
+- O usuario deve poder editar qualquer informacao preenchida automaticamente.
+- Quando houver mais de um resultado possivel, o app deve pedir confirmacao em vez de substituir dados silenciosamente.
+- A sinopse deve ser curta, clara e adequada para aparecer na tela de detalhes.
+- Dados ja salvos localmente devem continuar disponiveis offline.
+- Falhas de internet, APIs ou resultados ausentes devem gerar apenas estados discretos, sem bloquear o usuario.
+
+Para evitar uma experiencia confusa, o app deve diferenciar visualmente:
+
+- Dados detectados localmente.
+- Dados preenchidos automaticamente pela internet.
+- Dados editados manualmente pelo usuario.
 
 ## 7. Direcao Visual
 
@@ -261,8 +298,27 @@ Validar se o usuario pode cancelar a busca inicial e continuar usando o app com 
 - Falsos positivos sao faceis de remover na revisao.
 - Usuario entende que a biblioteca e local e privada.
 - O app continua util mesmo sem metadados online.
+- A maioria dos jogos reconhecidos recebe capa, genero e sinopse sem edicao manual.
+- O usuario consegue corrigir metadados incorretos rapidamente.
 
-## 13. Proximos Documentos
+## 13. Ideias de Melhorias Futuras
+
+As melhorias abaixo podem ser discutidas e priorizadas depois do MVP. Elas nao devem bloquear a primeira versao, mas ajudam a dar uma direcao mais ambiciosa ao produto.
+
+- **Colecoes inteligentes:** agrupar automaticamente por genero, launcher, pasta, favoritos, jogos recentes ou jogos sem capa.
+- **Status pessoal:** permitir marcar jogos como jogando, zerado, abandonado, quero jogar ou pausado.
+- **Tempo de jogo:** registrar tempo aproximado quando o jogo for iniciado pelo app.
+- **Notas e avaliacao pessoal:** permitir que o usuario de nota, escreva observacoes e registre progresso.
+- **Capas customizadas:** permitir trocar capa, banner e icone por arquivos locais.
+- **Perfis de visualizacao:** alternar entre grade, lista compacta e modo destaque.
+- **Importacao de launchers:** ler bibliotecas conhecidas com mais precisao quando Steam, Epic, GOG ou similares estiverem instalados.
+- **Backup local/exportacao:** exportar a biblioteca para arquivo e importar em outro PC sem depender de nuvem.
+- **Deteccao de duplicados:** avisar quando o mesmo jogo parecer existir em mais de uma pasta ou launcher.
+- **Modo privacidade:** ocultar caminhos completos, jogos ocultos ou informacoes sensiveis em capturas de tela.
+- **Atalhos rapidos:** criar favoritos na pagina inicial para abrir jogos recentes com poucos cliques.
+- **Filtros avancados:** filtrar por genero, ano, desenvolvedora, publicadora, origem, favorito e status pessoal.
+
+## 14. Proximos Documentos
 
 Depois deste documento de produto, os proximos documentos recomendados sao:
 
@@ -270,4 +326,5 @@ Depois deste documento de produto, os proximos documentos recomendados sao:
 - Especificacao da varredura de jogos no Windows.
 - Wireframes das telas principais.
 - Documento de modelo de dados local.
+- Especificacao de metadados online e preenchimento de sinopse.
 - Plano de empacotamento e instalacao para Windows.
