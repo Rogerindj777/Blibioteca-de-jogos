@@ -45,7 +45,8 @@ Esse usuario valoriza:
 - Biblioteca em grade com capas ou placeholders.
 - Busca textual por nome.
 - Filtros simples, como todos, favoritos e ocultos.
-- Cadastro manual de jogo.
+- Cadastro manual simplificado escolhendo apenas a pasta do jogo.
+- Cadastro opcional de diretorios de biblioteca para futuras instalacoes e varreduras.
 - Edicao basica de jogo cadastrado.
 - Marcar como favorito.
 - Ocultar jogo da biblioteca principal.
@@ -78,7 +79,7 @@ Durante a varredura, a interface deve mostrar:
 - Progresso geral.
 - Locais sendo analisados.
 - Quantidade de possiveis jogos encontrados.
-- Opcao para cancelar e adicionar jogos manualmente depois.
+- Opcao para cancelar e adicionar jogos manualmente por pasta depois.
 
 ### Varredura
 
@@ -123,8 +124,42 @@ A navegacao deve incluir:
 - Sidebar com secoes principais.
 - Busca sempre acessivel.
 - Filtros simples.
-- Botao para adicionar jogo manualmente.
+- Botao para adicionar jogo manualmente por pasta.
 - Botao para nova varredura.
+- Opcao para cadastrar um diretorio de biblioteca, caso o usuario queira monitorar ou reutilizar uma pasta onde costuma instalar jogos.
+
+### Adicionar Jogo Manualmente
+
+O fluxo manual deve ser simples. O usuario deve escolher a pasta do jogo e o app deve tentar identificar sozinho o executavel principal, nome, icone, capa e metadados.
+
+Fluxo esperado:
+
+- Usuario clica em adicionar jogo.
+- Usuario escolhe a pasta onde o jogo esta instalado.
+- App analisa a pasta e sugere o executavel principal.
+- Se houver mais de um executavel provavel, o app pede confirmacao.
+- Jogo e adicionado ou enviado para revisao com os dados encontrados.
+
+O usuario nao deve precisar preencher caminho do executavel, diretorio de trabalho ou argumentos no fluxo basico. Esses campos podem existir em edicao avancada.
+
+### Diretorios de Biblioteca Opcionais
+
+Apos a varredura completa, o app deve permitir que o usuario adicione diretorios de biblioteca. Esses diretorios representam pastas onde os jogos estao ou serao instalados futuramente.
+
+Exemplos:
+
+- `D:\Games`
+- `E:\Jogos`
+- `C:\Users\<usuario>\Games`
+
+Esse recurso deve ser opcional. O app continua funcionando sem nenhum diretorio configurado manualmente.
+
+Quando um diretorio de biblioteca for cadastrado:
+
+- Ele deve aparecer nas proximas varreduras.
+- O usuario pode remover o diretorio depois.
+- O app pode priorizar esse diretorio em buscas futuras.
+- O app nao deve instalar jogos nessa pasta; apenas usa o caminho como fonte de busca.
 
 ### Detalhes do Jogo
 
@@ -225,7 +260,7 @@ A comunicacao recomendada e: "O aplicativo organiza jogos e atalhos existentes n
 Quando nao houver jogos cadastrados, o app deve oferecer:
 
 - Iniciar varredura.
-- Adicionar jogo manualmente.
+- Adicionar jogo manualmente escolhendo uma pasta.
 - Mensagem curta explicando que a biblioteca e local.
 
 ### Nenhum Jogo Encontrado
@@ -233,8 +268,8 @@ Quando nao houver jogos cadastrados, o app deve oferecer:
 Se a varredura nao encontrar jogos, o app deve:
 
 - Informar que nada foi encontrado.
-- Oferecer adicionar manualmente.
-- Permitir escolher uma pasta para busca manual em uma versao futura ou fluxo complementar.
+- Oferecer adicionar manualmente escolhendo a pasta do jogo.
+- Oferecer adicionar um diretorio de biblioteca opcional para futuras varreduras.
 
 ### Jogo Removido ou Movido
 
@@ -257,7 +292,8 @@ Se nao houver internet:
 - Ao abrir pela primeira vez, o app inicia uma busca por jogos sem exigir configuracao.
 - O usuario consegue cancelar a varredura inicial.
 - O usuario consegue revisar os jogos encontrados antes de adiciona-los.
-- O usuario consegue adicionar um jogo manualmente.
+- O usuario consegue adicionar um jogo manualmente escolhendo apenas a pasta do jogo.
+- O usuario consegue cadastrar opcionalmente um diretorio de biblioteca para futuras varreduras.
 - O usuario consegue editar nome, caminho e capa de um jogo.
 - O usuario consegue ocultar e favoritar jogos.
 - O usuario consegue iniciar um jogo cadastrado.
